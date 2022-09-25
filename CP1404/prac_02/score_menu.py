@@ -6,6 +6,8 @@ Score Menu
 MENU = "(P) Print Score\n" \
        "(*) Print Stars\n" \
        "(Q) Quit"
+MINIMUM = 0
+MAXIMUM = 100
 
 
 def main():
@@ -30,7 +32,7 @@ def main():
 def get_valid_score():
     """Returns a valid score between 0 and 100"""
     score = float(input("Enter score: "))
-    while score < 0 or score > 100:
+    while score < MINIMUM or score > MAXIMUM:
         print("Invalid Score")
         score = float(input("Enter score: "))
     return score
