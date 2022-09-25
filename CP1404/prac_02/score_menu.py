@@ -4,29 +4,31 @@ Score Menu
 """
 
 MENU = "(P) Print Score\n" \
-       "(S) Print Stars\n" \
+       "(*) Print Stars\n" \
        "(Q) Quit"
 
 
 def main():
-    """"""
+    """Displays a Menu and gets a choice"""
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
-        score = get_valid_score()
         if choice == "P":
+            score = get_valid_score()
             result = evaluate_score(score)
             print(f"The score {score} is {result}.\n")
-        elif choice == "S":
+        elif choice == "*":
+            score = get_valid_score()
             print_stars(score)
         else:
-            "Invalid Choice"
+            print("Invalid Choice\n")
         print(MENU)
         choice = input(">>> ").upper()
     print("Done")
 
 
 def get_valid_score():
+    """Returns a valid score between 0 and 100"""
     score = float(input("Enter score: "))
     while score < 0 or score > 100:
         print("Invalid Score")
@@ -45,6 +47,7 @@ def evaluate_score(score):
 
 
 def print_stars(score):
+    """Print the number of stars"""
     print("*" * int(score))
     print()
 
