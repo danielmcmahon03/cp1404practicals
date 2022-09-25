@@ -9,7 +9,7 @@ MENU = "C - Convert Celsius to Fahrenheit\n" \
 
 
 def main():
-    """Function docstring"""
+    """Program for Converting Celsius to Fahrenheit and Vice-Versa"""
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
@@ -29,10 +29,12 @@ def main():
 
 
 def calculate_celsius(celsius):
+    """Calculate Fahrenheit from Celsius"""
     return celsius * 9.0 / 5 + 32
 
 
 def calculate_fahrenheit(fahrenheit):
+    """Calculate Celsius from Fahrenheit"""
     return (fahrenheit - 32) * 5 / 9
 
 
