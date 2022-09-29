@@ -55,5 +55,3 @@ def print_stars(score):
 
 
 main()
-
-
