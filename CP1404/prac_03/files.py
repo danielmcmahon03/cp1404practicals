@@ -15,8 +15,8 @@
 
 total = 0
 with open("numbers.txt", "r") as in_file:
-    for line in range(0, 2):
-        total += int(line)
+    total += float(in_file.readline())
+    total += float(in_file.readline())
 print(total)
 
 # Q4.
