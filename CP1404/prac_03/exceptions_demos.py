@@ -13,7 +13,7 @@ A ZeroDivision Error will occur when the input for the denominator is equal to 0
 
 3. Could you change the code to avoid the possibility of a ZeroDivisionError?
 
-To avoid the ZeroDiviionError, use an error checking pattern so that the value of 0 cannot be inputted.
+To avoid the ZeroDivisionError, use an error checking pattern so that the value of 0 cannot be inputted.
 
 """
 

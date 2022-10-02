@@ -21,7 +21,7 @@ number_of_days = 0
 OUTPUT_FILE = "prices.txt"
 out_file = open(OUTPUT_FILE, 'w')
 
-while price >= MIN_PRICE and price <= MAX_PRICE:
+while MIN_PRICE <= price <= MAX_PRICE:
     price_change = 0
     # generate a random integer of 1 or 2
     # if it's 1, the price increases, otherwise it decreases
