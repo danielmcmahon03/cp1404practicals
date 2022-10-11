@@ -6,9 +6,10 @@ List Exercises
 # Basic List Operations
 
 numbers = []
-for i in range(0, 5):
+for i in range(5):
     number = int(input("Number: "))
     numbers.append(number)
+
 print(f"The first number is {numbers[0]}")
 print(f"The last number is {numbers[4]}")
 print(f"The smallest number is {min(numbers)}")
