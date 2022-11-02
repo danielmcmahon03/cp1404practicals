@@ -2,6 +2,8 @@
 CP1404 - Guitar Class
 """
 
+CURRENT_YEAR = 2022
+
 
 class Guitar:
     """."""
@@ -18,7 +20,7 @@ class Guitar:
 
     def get_age(self):
         """."""
-        age = 2022 - self.year
+        age = CURRENT_YEAR - self.year
         return age
 
     def is_vintage(self):
