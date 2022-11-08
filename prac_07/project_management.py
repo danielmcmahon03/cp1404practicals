@@ -6,6 +6,7 @@ Time:
 """
 
 from project import Project
+import datetime
 
 MENU = "(L)oad projects\n(S)ave projects\n" \
        "(D)isplay projects\n(F)ilter projects by date\n" \
@@ -13,12 +14,12 @@ MENU = "(L)oad projects\n(S)ave projects\n" \
 
 
 def main():
-    projects = []
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            load_projects()
+            projects = load_projects()
+            print(projects)
         elif choice == "S":
             save_projects()
         elif choice == "D":
@@ -34,14 +35,18 @@ def main():
         choice = input(">>> ").upper()
 
 
-def load_projects(projects):
+def load_projects():
+    projects = []
     file_name = input("Filename: ")
     in_file = open(file_name, 'r')
+    in_file.readline()
     for line in in_file:
-        parts = line.strip().split('  ')
-        project = Project(parts[0], int(parts[1]), float(parts[2]))
-        projects.append(guitar)
+        parts = line.strip().split('\t')
+        start_date = datetime.datetime.strptime(parts[1], "%d/%m/%Y").date()
+        project = Project(parts[0], start_date, int(parts[2]), float(parts[3]), parts[4])
+        projects.append(project)
     in_file.close()
+    return projects
 
 
 def save_projects():
@@ -62,3 +67,5 @@ def add_new_project():
 
 def update_project():
     pass
+
+main()
