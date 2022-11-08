@@ -9,21 +9,23 @@ MENU = "(L)oad projects\n(S)ave projects\n" \
        "(D)isplay projects\n(F)ilter projects by date\n" \
        "(A)dd new project\n(U)pdate project\n(Q)uit"
 
-print(MENU)
 
-
-# display menu
-# get choice
-# while choice != <quit option>
-#     if choice == <first option>
-#         <do first task>
-#     else if choice == <second option>
-#         <do second task>
-#     ...
-#     else if choice == <n-th option>
-#         <do n-th task>
-#     else
-#         display invalid input error message
-#     display menu
-#     get choice
-# <do final thing, if needed>
+def main():
+    print(MENU)
+    choice = input(">>> ").upper()
+    while choice != "Q":
+        if choice == "L":
+            pass
+        elif choice == "S":
+            pass
+        elif choice == "D":
+            pass
+        elif choice == "F":
+            pass
+        elif choice == "A":
+            pass
+        elif choice == "U":
+            pass
+        else:
+            print("Invalid decision.")
+        choice = input(">>> ").upper()
