@@ -25,5 +25,19 @@ def main():
     for guitar in guitars:
         print(guitar)
 
+    add_guitar(guitars)
+
+
+def add_guitar(guitars):
+    """Add another guitar to guitars."""
+    name = input("Name: ")
+    while name != "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: $"))
+        print(f"{name} ({year}) : ${cost:,.2f}\n")
+        guitar = Guitar(name, year, cost)
+        guitars.append(guitar)
+        name = input("Name: ")
+
 
 main()
