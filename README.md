@@ -9,7 +9,7 @@ my two cats.
 
 ## Clean Code Principles
 
-- Follow PEP8 Standard
+- Follow PEP8 Standard.
 - Be consistent with naming, and using the correct formatting for each different type.
 - Explicit is better than Implicit.
 
