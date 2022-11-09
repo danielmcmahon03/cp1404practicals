@@ -23,4 +23,5 @@ class Project:
         return self.start_date > other.start_date
 
     def is_complete(self):
+        """Determine if a project is completed, if it is 100%."""
         return self.completion == "100"
