@@ -20,7 +20,7 @@ def main():
     while choice != "Q":
         if choice == "L":
             file_name = input("Filename: ")
-            projects = load_projects(file_name)
+            load_projects(file_name)
         elif choice == "S":
             save_projects(projects)
         elif choice == "D":
@@ -34,9 +34,11 @@ def main():
         else:
             print("Invalid decision.")
         choice = input(">>> ").upper()
+    print("Thank you for using custom-built project management software.")
 
 
 def load_projects(file_name):
+    """Load projects from list."""
     projects = []
     in_file = open(file_name, 'r')
     in_file.readline()
@@ -50,7 +52,7 @@ def load_projects(file_name):
 
 
 def save_projects(projects):
-    """Write guitars to an outfile"""
+    """Write projects to an outfile"""
     with open("projects.txt", "w") as out_file:
         for project in projects:
             print(f"{project.name}  {project.start_date}    {project.priority}  {project.cost}  {project.completion}",
@@ -58,6 +60,7 @@ def save_projects(projects):
 
 
 def display_projects(projects):
+    """Displays all projects sorted by priority."""
     print("Incomplete projects:")
     projects.sort()
     for project in projects:
@@ -70,14 +73,17 @@ def display_projects(projects):
 
 
 def filter_projects_by_date(projects):
+    """Filter projects to show projects after specified date."""
     date = (input("Show projects that start after date (dd/mm/yy): "))
     date = datetime.datetime.strptime(date, "%d/%m/%Y").date()
+    projects.sort()
     for project in projects:
         if project.start_date > date:
             print(project)
 
 
 def add_new_project(projects):
+    """Add a new project to project list."""
     print("Let's add a new project")
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yy): ")
@@ -89,14 +95,18 @@ def add_new_project(projects):
 
 
 def update_project(projects):
+    """Update a current project."""
     for i, project in enumerate(projects, 0):
         print(f"({i}) {project}")
     project_choice = int(input("Project choice: "))
     print(projects[project_choice])
-    new_percentage = float(input("New percentage: "))
-    projects[project_choice][4] = new_percentage
-    new_priority = int(input("New priority: "))
-    projects[project_choice][2] = new_priority
+    if projects[project_choice].is_complete():
+        print("Already completed")
+    else:
+        new_percentage = float(input("New percentage: "))
+        projects[project_choice][4] = new_percentage
+        new_priority = int(input("New priority: "))
+        projects[project_choice][2] = new_priority
 
 
 main()

@@ -20,7 +20,7 @@ class Project:
         return self.priority < other.priority
 
     def __gt__(self, other):
-        return self.start_date < other.start_date
+        return self.start_date > other.start_date
 
     def is_complete(self):
         return self.completion == "100"
