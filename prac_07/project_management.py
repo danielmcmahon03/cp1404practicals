@@ -26,11 +26,11 @@ def main():
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
-            filter_projects_by_date()
+            filter_projects_by_date(projects)
         elif choice == "A":
-            add_new_project()
+            add_new_project(projects)
         elif choice == "U":
-            update_project()
+            update_project(projects)
         else:
             print("Invalid decision.")
         choice = input(">>> ").upper()
@@ -69,16 +69,34 @@ def display_projects(projects):
             print("\t", project)
 
 
-def filter_projects_by_date():
-    pass
+def filter_projects_by_date(projects):
+    date = (input("Show projects that start after date (dd/mm/yy): "))
+    date = datetime.datetime.strptime(date, "%d/%m/%Y").date()
+    for project in projects:
+        if project.start_date > date:
+            print(project)
 
 
-def add_new_project():
-    pass
+def add_new_project(projects):
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yy): ")
+    priority = input("Priority: ")
+    cost = input("Cost estimate: $")
+    completion = input("Percent complete: ")
+    project = Project(name, start_date, priority, cost, completion)
+    projects.append(project)
 
 
-def update_project():
-    pass
+def update_project(projects):
+    for i, project in enumerate(projects, 0):
+        print(f"({i}) {project}")
+    project_choice = int(input("Project choice: "))
+    print(projects[project_choice])
+    new_percentage = float(input("New percentage: "))
+    projects[project_choice][4] = new_percentage
+    new_priority = int(input("New priority: "))
+    projects[project_choice][2] = new_priority
 
 
 main()
