@@ -1,7 +1,7 @@
 """
 CP1404 - Practical 7
 Project Management
-Estimate: 45 minutes
+Estimate: 1 hour
 Time:
 """
 
@@ -15,15 +15,16 @@ MENU = "(L)oad projects\n(S)ave projects\n" \
 
 def main():
     print(MENU)
+    projects = load_projects("projects.txt")
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            projects = load_projects()
-            print(projects)
+            file_name = input("Filename: ")
+            projects = load_projects(file_name)
         elif choice == "S":
-            save_projects()
+            save_projects(projects)
         elif choice == "D":
-            display_projects()
+            display_projects(projects)
         elif choice == "F":
             filter_projects_by_date()
         elif choice == "A":
@@ -35,9 +36,8 @@ def main():
         choice = input(">>> ").upper()
 
 
-def load_projects():
+def load_projects(file_name):
     projects = []
-    file_name = input("Filename: ")
     in_file = open(file_name, 'r')
     in_file.readline()
     for line in in_file:
@@ -49,12 +49,24 @@ def load_projects():
     return projects
 
 
-def save_projects():
-    pass
+def save_projects(projects):
+    """Write guitars to an outfile"""
+    with open("projects.txt", "w") as out_file:
+        for project in projects:
+            print(f"{project.name}  {project.start_date}    {project.priority}  {project.cost}  {project.completion}",
+                  file=out_file)
 
 
-def display_projects():
-    pass
+def display_projects(projects):
+    print("Incomplete projects:")
+    projects.sort()
+    for project in projects:
+        if not project.is_complete():
+            print("\t", project)
+    print("Completed projects:")
+    for project in projects:
+        if project.is_complete():
+            print("\t", project)
 
 
 def filter_projects_by_date():
@@ -67,5 +79,6 @@ def add_new_project():
 
 def update_project():
     pass
+
 
 main()
