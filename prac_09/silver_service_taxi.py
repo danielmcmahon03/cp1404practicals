@@ -10,9 +10,9 @@ class SilverServiceTaxi(Taxi):
     price_per_km = 1.23
     flagfall = 4.50
 
-    def __init__(self, fanciness: float, **kwargs):
+    def __init__(self, name, fuel, fanciness: float):
         """Initialise a Taxi instance, based on parent class Car."""
-        super().__init__(**kwargs)
+        super().__init__(name, fuel)
         self.fanciness = fanciness
         self.price_per_km *= self.fanciness
 
